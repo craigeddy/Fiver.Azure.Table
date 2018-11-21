@@ -25,7 +25,9 @@ namespace Fiver.Azure.Table.Client
                     new AzureTableSettings(
                         storageAccount: Configuration["Table_StorageAccount"],
                         storageKey: Configuration["Table_StorageKey"],
-                        tableName: Configuration["Table_TableName"]));
+                        tableName: Configuration["Table_TableName"],
+                        connectionString: Configuration["Table_ConnectionString"]
+                        ));
             });
             services.AddScoped<IMovieService, MovieService>();
 
