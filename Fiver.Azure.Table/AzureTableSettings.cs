@@ -9,10 +9,10 @@ namespace Fiver.Azure.Table
                                        string tableName,
                                        string connectionString)
         {
-            if (string.IsNullOrEmpty(storageAccount))
+            if (string.IsNullOrEmpty(storageAccount) && string.IsNullOrEmpty(connectionString))
                 throw new ArgumentNullException("StorageAccount");
 
-            if (string.IsNullOrEmpty(storageKey))
+            if (string.IsNullOrEmpty(storageKey) && string.IsNullOrEmpty(connectionString))
                 throw new ArgumentNullException("StorageKey");
 
             if (string.IsNullOrEmpty(tableName))
