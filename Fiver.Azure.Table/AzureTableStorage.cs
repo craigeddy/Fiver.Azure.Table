@@ -127,8 +127,10 @@ namespace Fiver.Azure.Table
         private async Task<CloudTable> GetTableAsync()
         {
             //Account
-            CloudStorageAccount storageAccount = new CloudStorageAccount(
-                new StorageCredentials(this.settings.StorageAccount, this.settings.StorageKey), false);
+            CloudStorageAccount storageAccount = string.IsNullOrEmpty(settings.ConnectionString)
+                ? new CloudStorageAccount(
+                    new StorageCredentials(this.settings.StorageAccount, this.settings.StorageKey), false)
+                : CloudStorageAccount.Parse(settings.ConnectionString);
 
             //Client
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
